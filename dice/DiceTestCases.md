@@ -57,6 +57,10 @@ This is a Dice class for dice game. Dice holds the number of dots. The number of
 
 #### Test cases for toString
 
+In both cases create a new dice (no upper bound).
+
+- Roll the dice and compare result string with dots
+- don't roll the dice. Compare result to `'Not rolled yet'`
 
 ### **Getter**
 
