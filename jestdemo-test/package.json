@@ -1,0 +1,15 @@
+{
+  "name": "jestdemo-test",
+  "version": "1.0.0",
+  "description": "1. Create a project folder",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.0.6"
+  }
+}
