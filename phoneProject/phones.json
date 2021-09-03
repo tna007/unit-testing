@@ -1,0 +1,38 @@
+[
+  {
+    "firstname": "Woody",
+    "lastname": "Hoody",
+    "phones": [
+      {
+        "type": "home",
+        "number": "12345678"
+      },
+      {
+        "type": "work",
+        "number": "8765489"
+      },
+      {
+        "type": "work",
+        "number": "22555888"
+      }
+    ]
+  },
+  {
+    "firstname": "Mickey",
+    "lastname": "Minnie",
+    "phones": [
+      {
+        "type": "home",
+        "number": "11144456"
+      },
+      {
+        "type": "mobile",
+        "number": "04458795"
+      },
+      {
+        "type": "work",
+        "number": "23575889"
+      }
+    ]
+  }
+]
