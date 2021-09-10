@@ -65,4 +65,28 @@ module.exports = class PhoneRegister {
 
     return found;
   }
+
+  getAllNumbers() {
+    const found = [];
+    for (let person of this.phoneRegister) {
+      if (person.phones && person.phones.length > 0) {
+        found.push(person);
+      }
+    }
+    return found;
+  }
+
+  getName(number) {
+    for (let person of this.phoneRegister) {
+      for (let phone of person.phones) {
+        if (phone.number === number) {
+          return {
+            firstname: person.firstname,
+            lastname: person.lastname,
+          };
+        }
+      }
+    }
+    return null;
+  }
 };

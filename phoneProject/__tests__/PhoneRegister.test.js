@@ -157,3 +157,116 @@ describe("Testing getAllNumbersByType", () => {
     );
   });
 });
+
+describe("Testing getAllNumbers", () => {
+  test("get all with default data", () => {
+    const phoneRegister = new PhoneRegister(phones);
+    expect(phoneRegister.getAllNumbers()).toEqual(phones);
+  });
+
+  test("some phone missing", () => {
+    const testData = [
+      {
+        firstname: "Woody",
+        lastname: "Hoody",
+        phones: [
+          {
+            type: "home",
+            number: "12345678",
+          },
+          {
+            type: "work",
+            number: "8765489",
+          },
+          {
+            type: "work",
+            number: "22555888",
+          },
+        ],
+      },
+      {
+        firstname: "Mickey",
+        lastname: "Minnie",
+        phones: [],
+      },
+    ];
+
+    const expectedResults = [
+      {
+        firstname: "Woody",
+        lastname: "Hoody",
+        phones: [
+          {
+            type: "home",
+            number: "12345678",
+          },
+          {
+            type: "work",
+            number: "8765489",
+          },
+          {
+            type: "work",
+            number: "22555888",
+          },
+        ],
+      },
+    ];
+
+    const phoneRegister = new PhoneRegister(testData);
+    expect(phoneRegister.getAllNumbers()).toEqual(expectedResults);
+  });
+
+  test("all phone missing", () => {
+    const testData = [
+      {
+        firstname: "Woody",
+        lastname: "Hoody",
+        phones: [],
+      },
+      {
+        firstname: "Mickey",
+        lastname: "Minnie",
+        phones: [],
+      },
+    ];
+
+    const phoneRegister = new PhoneRegister(testData);
+    expect(phoneRegister.getAllNumbers()).toEqual([]);
+  });
+
+  test("all person missing", () => {
+    const phoneRegister = new PhoneRegister([]);
+    expect(phoneRegister.getAllNumbers()).toEqual([]);
+  });
+});
+
+describe("Testing getName", () => {
+  const phoneRegister = new PhoneRegister(phones);
+
+  test('get name of the number "12345678"', () => {
+    expect(phoneRegister.getName("12345678")).toEqual({
+      firstname: "Woody",
+      lastname: "Hoody",
+    });
+  });
+
+  describe("get names by numbers from default data", () => {
+    const testValues = [
+      ["12345678", { firstname: "Woody", lastname: "Hoody" }],
+      ["8765489", { firstname: "Woody", lastname: "Hoody" }],
+      ["11144456", { firstname: "Mickey", lastname: "Minnie" }],
+    ];
+
+    test.each(testValues)("number %s returns %p", (number, expectedValue) => {
+      expect(phoneRegister.getName(number)).toEqual(expectedValue);
+    });
+  });
+
+  test("wrong number", () => {
+    expect(phoneRegister.getName("0000")).toBeNull();
+  });
+
+  test("parameter missing", () => {
+    expect(phoneRegister.getName()).toBeNull();
+  });
+});
